@@ -14,6 +14,10 @@ public class EmployeeController {
     public ResponseEntity<String> handleException(Exception e) {
         return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @ExceptionHandler({InvalidNameException.class})
+    public ResponseEntity<String> handleException(InvalidNameException e) {
+        return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 
     private final EmployeeService employeeService;
 
